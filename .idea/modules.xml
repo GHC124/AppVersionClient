@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AppVersionClient.iml" filepath="$PROJECT_DIR$/AppVersionClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AppVersionClient/AppVersionClient-AppVersionClient.iml" filepath="$PROJECT_DIR$/AppVersionClient/AppVersionClient-AppVersionClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AppVersionClient.Common/AppVersionClient.Common.iml" filepath="$PROJECT_DIR$/AppVersionClient.Common/AppVersionClient.Common.iml" />
+    </modules>
+  </component>
+</project>
+
