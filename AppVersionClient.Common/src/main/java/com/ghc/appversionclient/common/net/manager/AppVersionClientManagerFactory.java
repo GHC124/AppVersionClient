@@ -1,5 +1,7 @@
 package com.ghc.appversionclient.common.net.manager;
 
+import android.text.TextUtils;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -22,12 +24,22 @@ public class AppVersionClientManagerFactory {
 			Response.Listener<JSONObject> listener, Response.ErrorListener errorListener, String username,
 			String password) {
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
-		if (password != null) {
+		if (!TextUtils.isEmpty(password)) {
 			params.add(new BasicNameValuePair(AppVersionClientManager.PASSWORD_PARAM, password));
 		}
 		AppVersionClientManager manager = new AppVersionClientManager(requestQueue, Request.Method.POST,
 				POST_LOGIN_URL, params, null, listener, errorListener);
-        manager.setUserName(username);
+		manager.setUserName(username);
+
+		return manager;
+	}
+
+    private static final String GET_ALL_APPS_URL = "/apps/all";
+
+	public static AppVersionClientManager newGetAllApps(RequestQueue requestQueue,
+			Response.Listener<JSONObject> listener, Response.ErrorListener errorListener) {
+		AppVersionClientManager manager = new AppVersionClientManager(requestQueue, Request.Method.GET,
+				GET_ALL_APPS_URL, null, null, listener, errorListener);
 
 		return manager;
 	}

@@ -1,5 +1,7 @@
 package com.ghc.appversionclient.common.net.util;
 
+import android.text.TextUtils;
+
 import org.apache.http.NameValuePair;
 
 import java.io.UnsupportedEncodingException;
@@ -23,7 +25,9 @@ public class UrlBuilder {
                 sb.append(encode ? URLEncoder.encode(name, "UTF-8") : name);
                 sb.append('=');
                 String value = param.getValue();
-                sb.append(encode ? URLEncoder.encode(param.getValue(), "UTF-8") : value);
+                if(!TextUtils.isEmpty(value)) {
+                    sb.append(encode ? URLEncoder.encode(value, "UTF-8") : value);
+                }
                 first = false;
             }
         } catch (UnsupportedEncodingException e) {
