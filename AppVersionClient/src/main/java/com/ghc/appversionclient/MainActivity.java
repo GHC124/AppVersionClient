@@ -58,16 +58,15 @@ public class MainActivity extends Activity {
         if (mCurrentMenu != null) {
             switch (mCurrentMenu) {
                 case APPS:
-                    old = findViewById(R.id.ps_rlMenuItem_Hot);
-                    break;
+                    old = findViewById(R.id.ps_rlMenuItem_Apps);
                     break;
             }
         }
         moveSelectBox(old, v);
         switch (v.getId()) {
-            case R.id.ps_rlMenuItem_Hot:
-                mCurrentMenu = MenuItem.HOT;
-                changeMenuItem(MenuItem.HOT);
+            case R.id.ps_rlMenuItem_Apps:
+                mCurrentMenu = MenuItem.APPS;
+                changeMenuItem(MenuItem.APPS);
                 break;
         }
     }
@@ -76,7 +75,7 @@ public class MainActivity extends Activity {
         View newView = null;
         switch (menuItem) {
             case APPS:
-                newView = findViewById(R.id.ps_rlMenuItem_Hot);
+                newView = findViewById(R.id.ps_rlMenuItem_Apps);
                 break;
         }
         moveSelectBox(null, newView);
