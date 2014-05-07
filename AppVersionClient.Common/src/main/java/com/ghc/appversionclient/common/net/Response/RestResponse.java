@@ -13,6 +13,10 @@ public class RestResponse {
     public RestResponse() {
     }
 
+    public RestResponse(RestResponse restResponse) {
+        this(restResponse.getStatus(), restResponse.getMessage());
+    }
+
     public RestResponse(String status, String message) {
         mStatus = status;
         mMessage = message;

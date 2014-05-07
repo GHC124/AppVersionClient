@@ -26,9 +26,8 @@ public class AppResponseParser extends RestResponseParser implements ResponsePar
 
     @Override
     public RestResponse parse(JSONObject jsonObj) throws JSONException, ParseException {
-        super.parse(jsonObj);
-
-        AppResponse data = new AppResponse();
+        RestResponse restResponse = super.parse(jsonObj);
+        AppResponse data = new AppResponse(restResponse);
 
         if(jsonObj.has(DATA_KEY)) {
             List<AppData> appData = new ArrayList<AppData>();
@@ -37,22 +36,22 @@ public class AppResponseParser extends RestResponseParser implements ResponsePar
 				JSONObject item = jsonArray.getJSONObject(i);
                 AppData app = new AppData();
                 if (item.has(ID_KEY)) {
-                    app.setId(jsonObj.getLong(ID_KEY));
+                    app.setId(item.getLong(ID_KEY));
                 }
                 if (item.has(NAME_KEY)) {
-                    app.setName(jsonObj.getString(NAME_KEY));
+                    app.setName(item.getString(NAME_KEY));
                 }
                 if (item.has(ICON_URL_KEY)) {
-                    app.setIconUrl(jsonObj.getString(ICON_URL_KEY));
+                    app.setIconUrl(item.getString(ICON_URL_KEY));
                 }
                 if (item.has(DESCRIPTION_KEY)) {
-                    app.setDescription(jsonObj.getString(DESCRIPTION_KEY));
+                    app.setDescription(item.getString(DESCRIPTION_KEY));
                 }
                 if (item.has(LATEST_VERSION_KEY)) {
-                    app.setLatestVersion(jsonObj.getString(LATEST_VERSION_KEY));
+                    app.setLatestVersion(item.getString(LATEST_VERSION_KEY));
                 }
                 if (item.has(PLATFORM_ID_KEY)) {
-                    app.setPlatformId(jsonObj.getLong(PLATFORM_ID_KEY));
+                    app.setPlatformId(item.getLong(PLATFORM_ID_KEY));
                 }
                 appData.add(app);
 			}

@@ -8,6 +8,11 @@ import java.util.List;
  *
  */
 public class AppResponse extends RestResponse {
+    public AppResponse(RestResponse restResponse){
+        super(restResponse);
+    }
+
+
     private List<AppData> mAppData;
 
     public List<AppData> getAppData() {
