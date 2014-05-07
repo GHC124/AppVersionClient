@@ -1,4 +1,4 @@
-package com.ghc.appversionclient.common.net.Response;
+package com.ghc.appversionclient.common.net.response;
 
 import com.ghc.appversionclient.common.net.data.AppData;
 

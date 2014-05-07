@@ -1,7 +1,7 @@
 package com.ghc.appversionclient.common.net.parser;
 
-import com.ghc.appversionclient.common.net.Response.AppResponse;
-import com.ghc.appversionclient.common.net.Response.RestResponse;
+import com.ghc.appversionclient.common.net.response.AppResponse;
+import com.ghc.appversionclient.common.net.response.RestResponse;
 import com.ghc.appversionclient.common.net.data.AppData;
 
 import org.json.JSONArray;

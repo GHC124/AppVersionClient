@@ -17,7 +17,7 @@ import android.widget.EditText;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
-import com.ghc.appversionclient.common.net.Response.RestResponse;
+import com.ghc.appversionclient.common.net.response.RestResponse;
 import com.ghc.appversionclient.common.net.manager.AppVersionClientManager;
 import com.ghc.appversionclient.common.net.manager.AppVersionClientManagerFactory;
 import com.ghc.appversionclient.common.net.parser.RestResponseParser;

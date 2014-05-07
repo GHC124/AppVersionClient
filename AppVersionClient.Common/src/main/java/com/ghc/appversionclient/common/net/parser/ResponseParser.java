@@ -1,6 +1,6 @@
 package com.ghc.appversionclient.common.net.parser;
 
-import com.ghc.appversionclient.common.net.Response.RestResponse;
+import com.ghc.appversionclient.common.net.response.RestResponse;
 
 import org.json.JSONException;
 import org.json.JSONObject;
