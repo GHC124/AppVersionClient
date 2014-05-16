@@ -19,5 +19,6 @@
 	<string name="display_previous">Previous</string>
 	<string name="display_next">Next</string>
 	<string name="display_publish">Publish</string>
+    <string name="settings_server">Server</string>
 
 </resources>

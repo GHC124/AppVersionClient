@@ -16,7 +16,7 @@
 
     <LinearLayout
         android:id="@+id/ps_llMain_MenuContent"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/ps_dimen_height_8"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
@@ -51,6 +51,35 @@
                 android:singleLine="true"
                 android:tag="menuItem_text"
                 android:text="@string/menu_apps" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/ps_rlMenuItem_Settings"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:minWidth="@dimen/ps_dimen_width_14"
+            android:onClick="onMenuItemClick" >
+
+            <ImageView
+                android:id="@+id/ps_imgMenuItem_Settings"
+                android:layout_width="@dimen/ps_dimen_width_5"
+                android:layout_height="@dimen/ps_dimen_height_2p5"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/ps_dimen_height_1"
+                android:contentDescription="@string/display_content_description"
+                android:scaleType="fitXY"
+                android:background="@drawable/selector_button_menu_more"/>
+
+            <TextView
+                style="@style/font_bold_black12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ps_imgMenuItem_Settings"
+                android:layout_centerHorizontal="true"
+                android:singleLine="true"
+                android:tag="menuItem_text"
+                android:text="@string/menu_setting" />
         </RelativeLayout>
     </LinearLayout>
 

@@ -36,7 +36,7 @@ public class BaseApplication extends Application {
 
 	public UserPreferences getUserPreferences() {
 		if (mUserPreferences == null) {
-			mUserPreferences = new UserPreferences(this);
+			mUserPreferences = UserPreferences.getInstance(this);
 		}
 		return mUserPreferences;
 	}

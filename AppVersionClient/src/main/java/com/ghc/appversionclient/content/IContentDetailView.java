@@ -9,4 +9,6 @@ import android.view.ViewGroup;
 public interface IContentDetailView {
 	View getView(Context context, LayoutInflater inflater, ViewGroup container,
                  Fragment fragment);
+
+    void onPause();
 }

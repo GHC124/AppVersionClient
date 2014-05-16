@@ -100,4 +100,9 @@ public class AppsFragment implements IContentDetailView {
 
 		return layout;
 	}
+
+    @Override
+    public void onPause() {
+
+    }
 }

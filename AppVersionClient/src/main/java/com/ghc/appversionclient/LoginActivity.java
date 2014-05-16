@@ -17,10 +17,10 @@ import android.widget.EditText;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
-import com.ghc.appversionclient.common.net.response.RestResponse;
 import com.ghc.appversionclient.common.net.manager.AppVersionClientManager;
 import com.ghc.appversionclient.common.net.manager.AppVersionClientManagerFactory;
 import com.ghc.appversionclient.common.net.parser.RestResponseParser;
+import com.ghc.appversionclient.common.net.response.RestResponse;
 import com.ghc.appversionclient.prefs.UserPreferences;
 import com.ghc.appversionclient.util.Logger;
 
@@ -51,10 +51,16 @@ public class LoginActivity extends Activity {
 
 		BaseApplication.getInstance().enableLog();
 		AppVersionClientManager.setEnableLog(true);
-		AppVersionClientManager.setBaseURL("http://10.88.106.123:8088/AppVersion/rest");
+		AppVersionClientManager.setBaseURL("http://10.88.106.123:8080/AppVersion/rest");
 		AppVersionClientManager.clearToken();
-		// Check token
+		// Check preference
 		UserPreferences userPreferences = BaseApplication.getInstance().getUserPreferences();
+        String serverEndpoint = userPreferences.getServerEndpoint();
+        if(!TextUtils.isEmpty(serverEndpoint)){
+            AppVersionClientManager.setBaseURL(serverEndpoint);
+        }else{
+            userPreferences.setServerEndpoint(AppVersionClientManager.getBaseURL());
+        }
 		String username = userPreferences.getUserLoginUserName();
 		String loginToken = userPreferences.getUserLoginToken();
 		if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(loginToken)) {

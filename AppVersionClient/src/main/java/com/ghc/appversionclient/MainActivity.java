@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.ghc.appversionclient.content.ContentDetailFragment;
 import com.ghc.appversionclient.content.ContentDetailsViewFactory.MenuItem;
 
-public class MainActivity extends  BaseActivity {
+public class MainActivity extends BaseActivity {
 	private MenuItem mCurrentMenu = MenuItem.APPS;
 
 	private ProgressDialog mProgressDialog;
@@ -34,7 +34,6 @@ public class MainActivity extends  BaseActivity {
 		prepareData();
 	}
 
-
 	@Override
 	public boolean onOptionsItemSelected(android.view.MenuItem item) {
 		switch (item.getItemId()) {
@@ -51,13 +50,20 @@ public class MainActivity extends  BaseActivity {
 			case APPS:
 				old = findViewById(R.id.ps_rlMenuItem_Apps);
 				break;
+			case SETTINGS:
+				old = findViewById(R.id.ps_rlMenuItem_Settings);
+				break;
 			}
 		}
-        changeSelectedMenu(old, v);
+		changeSelectedMenu(old, v);
 		switch (v.getId()) {
 		case R.id.ps_rlMenuItem_Apps:
 			mCurrentMenu = MenuItem.APPS;
 			changeMenuItem(MenuItem.APPS);
+			break;
+		case R.id.ps_rlMenuItem_Settings:
+			mCurrentMenu = MenuItem.SETTINGS;
+			changeMenuItem(MenuItem.SETTINGS);
 			break;
 		}
 	}
@@ -68,8 +74,11 @@ public class MainActivity extends  BaseActivity {
 		case APPS:
 			newView = findViewById(R.id.ps_rlMenuItem_Apps);
 			break;
+		case SETTINGS:
+			newView = findViewById(R.id.ps_rlMenuItem_Settings);
+			break;
 		}
-        changeSelectedMenu(null, newView);
+		changeSelectedMenu(null, newView);
 	}
 
 	private void changeMenuItem(MenuItem item) {
@@ -85,21 +94,21 @@ public class MainActivity extends  BaseActivity {
 
 	// Get data from server
 	private void prepareData() {
-        mProgressDialog.dismiss();
-        View view = findViewById(R.id.ps_rlMenuItem_Apps);
-        onMenuItemClick(view);
+		mProgressDialog.dismiss();
+		View view = findViewById(R.id.ps_rlMenuItem_Apps);
+		onMenuItemClick(view);
 	}
 
-    private void changeSelectedMenu(final View oldView, final View newView){
-        if (oldView != null) {
-            TextView oldText = (TextView) oldView.findViewWithTag("menuItem_text");
-            if (oldText != null) {
-                oldText.setTextColor(Color.parseColor("#000000"));
-            }
-        }
-        TextView newText = (TextView) newView.findViewWithTag("menuItem_text");
-        if (newText != null) {
-            newText.setTextColor(Color.parseColor("#e4e1bd"));
-        }
-    }
+	private void changeSelectedMenu(final View oldView, final View newView) {
+		if (oldView != null) {
+			TextView oldText = (TextView) oldView.findViewWithTag("menuItem_text");
+			if (oldText != null) {
+				oldText.setTextColor(Color.parseColor("#000000"));
+			}
+		}
+		TextView newText = (TextView) newView.findViewWithTag("menuItem_text");
+		if (newText != null) {
+			newText.setTextColor(Color.parseColor("#e4e1bd"));
+		}
+	}
 }

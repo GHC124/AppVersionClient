@@ -33,4 +33,13 @@ public class ContentDetailFragment extends Fragment {
 		return ContentDetailsViewFactory.createView(getActivity(), inflater,
 				container, mItemEnum, this);
 	}
+
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        if(mItemEnum != null){
+            ContentDetailsViewFactory.onPause(mItemEnum);
+        }
+    }
 }

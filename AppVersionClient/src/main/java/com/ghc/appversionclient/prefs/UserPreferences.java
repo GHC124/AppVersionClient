@@ -5,10 +5,24 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 public class UserPreferences {
+    private static UserPreferences INSTANCE;
+
+    public static UserPreferences getInstance(Context context){
+        if(INSTANCE == null){
+            synchronized (UserPreferences.class){
+                if(INSTANCE == null){
+                    // User applicationContext here for Application
+                    INSTANCE = new UserPreferences(context.getApplicationContext());
+                }
+            }
+        }
+        return INSTANCE;
+    }
+
 	/** holds application shared preferences. */
 	private final SharedPreferences mSharedPrefs;
 
-	public UserPreferences(Context context) {
+	private UserPreferences(Context context) {
 		mSharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
 	}
 
@@ -36,6 +50,17 @@ public class UserPreferences {
                 .edit()
                 .putString(UserPreferencesConstants.USER_LOGIN_USERNAME,
                         username).apply();
+    }
+
+    public String getServerEndpoint() {
+        return mSharedPrefs.getString(UserPreferencesConstants.SERVER_ENDPOINT, null);
+    }
+
+    public void setServerEndpoint(String server) {
+        mSharedPrefs
+                .edit()
+                .putString(UserPreferencesConstants.SERVER_ENDPOINT,
+                        server).apply();
     }
 
 }

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ghc.appversionclient.content.apps.AppsFragment;
+import com.ghc.appversionclient.content.settings.SettingsFragment;
 
 public class ContentDetailsViewFactory {
 	/**
@@ -17,10 +18,11 @@ public class ContentDetailsViewFactory {
 	 * 
 	 */
 	public enum MenuItem {
-		APPS(0, AppsFragment.class);
+		APPS(0, AppsFragment.class), SETTINGS(1, SettingsFragment.class);
 
 		private int value;
 		private Class<? extends IContentDetailView> viewClass;
+        private IContentDetailView viewInstance;
 
 		private static final SparseArray<MenuItem> ENUM_MAP = new SparseArray<MenuItem>();
 		static {
@@ -38,15 +40,19 @@ public class ContentDetailsViewFactory {
 		public IContentDetailView createView() {
 			if (viewClass != null) {
 				try {
-					return viewClass.newInstance();
+					viewInstance = viewClass.newInstance();
 				} catch (InstantiationException e) {
 					throw new RuntimeException(e);
 				} catch (IllegalAccessException e) {
 					throw new RuntimeException(e);
 				}
 			}
-			return null;
+			return viewInstance;
 		}
+
+        public IContentDetailView getViewInstance(){
+            return viewInstance;
+        }
 
 		public static MenuItem valueOf(int value) {
 			return ENUM_MAP.get(value);
@@ -56,6 +62,16 @@ public class ContentDetailsViewFactory {
 	public static View createView(Context context, LayoutInflater inflater,
 			ViewGroup container, MenuItem item, Fragment fragment) {
 		IContentDetailView detailsView = item.createView();
-		return detailsView.getView(context, inflater, container, fragment);
+        if(detailsView != null) {
+            return detailsView.getView(context, inflater, container, fragment);
+        }
+        return null;
 	}
+
+    public static void onPause(MenuItem item) {
+        IContentDetailView detailView  = item.getViewInstance();
+        if(detailView != null){
+            detailView.onPause();
+        }
+    }
 }
