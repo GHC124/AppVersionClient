@@ -26,6 +26,10 @@
             android:name="com.ghc.appversionclient.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
+        <activity
+            android:name="com.ghc.appversionclient.SettingActivity"
+            android:label="@string/title_activity_setting" >
+        </activity>
     </application>
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->

@@ -7,7 +7,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -87,11 +86,25 @@ public class LoginActivity extends Activity {
 			}
 		});
 
+        Button mSettingButton = (Button) findViewById(R.id.setting_button);
+        mSettingButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showSetting();
+            }
+        });
+
 		mLoginFormView = findViewById(R.id.login_form);
 		mProgressView = findViewById(R.id.login_progress);
 	}
 
-	/**
+    private void showSetting() {
+        Intent intent= new Intent(this, SettingActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+    }
+
+    /**
 	 * Attempts to sign in or register the account specified by the login form.
 	 * If there are form errors (invalid email, missing fields, etc.), the
 	 * errors are presented and no actual login attempt is made.
@@ -237,13 +250,5 @@ public class LoginActivity extends Activity {
 			mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
 			mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
 		}
-	}
-
-	private interface ProfileQuery {
-		String[] PROJECTION = { ContactsContract.CommonDataKinds.Email.ADDRESS,
-				ContactsContract.CommonDataKinds.Email.IS_PRIMARY, };
-
-		int ADDRESS = 0;
-		int IS_PRIMARY = 1;
 	}
 }

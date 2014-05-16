@@ -1,32 +1,26 @@
-package com.ghc.appversionclient.content.settings;
+package com.ghc.appversionclient;
 
-import android.app.Fragment;
-import android.content.Context;
+import android.app.Activity;
+import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 
-import com.ghc.appversionclient.BaseApplication;
-import com.ghc.appversionclient.R;
 import com.ghc.appversionclient.common.net.manager.AppVersionClientManager;
-import com.ghc.appversionclient.content.IContentDetailView;
 import com.ghc.appversionclient.prefs.UserPreferences;
 
-public class SettingsFragment implements IContentDetailView {
-	private Context mContext;
-	private Fragment mFragment;
-	private EditText mServer;
 
-	@Override
-	public View getView(Context context, LayoutInflater inflater, ViewGroup container, Fragment fragment) {
-		mContext = context;
-		mFragment = fragment;
+public class SettingActivity extends Activity {
+    private EditText mServer;
 
-		View layout = inflater.inflate(R.layout.content_settings, null);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_setting);
 
-        mServer = (EditText)layout.findViewById(R.id.tvSettings_Server);
+        mServer = (EditText)findViewById(R.id.tvSettings_Server);
 
         UserPreferences userPreferences = BaseApplication.getInstance().getUserPreferences();
 
@@ -34,12 +28,20 @@ public class SettingsFragment implements IContentDetailView {
         if(!TextUtils.isEmpty(serverEndpoint) && mServer != null) {
             mServer.setText(serverEndpoint);
         }
+    }
 
-		return layout;
-	}
 
     @Override
-    public void onPause() {
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
+    }
+    
+    public void onSaveClick(View view){
         UserPreferences userPreferences = BaseApplication.getInstance().getUserPreferences();
 
         String serverEndpoint = mServer.getText().toString();
@@ -47,5 +49,7 @@ public class SettingsFragment implements IContentDetailView {
             userPreferences.setServerEndpoint(serverEndpoint);
             AppVersionClientManager.setBaseURL(serverEndpoint);
         }
+
+        finish();
     }
 }

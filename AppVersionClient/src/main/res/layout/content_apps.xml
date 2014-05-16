@@ -14,4 +14,12 @@
                  android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
                  android:layout_centerInParent="true"/>
+    <TextView
+        style="@style/font_bold_black18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"
+        android:text="@string/display_no_item"
+        />
 </RelativeLayout>

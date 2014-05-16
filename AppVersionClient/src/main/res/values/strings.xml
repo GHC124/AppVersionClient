@@ -12,13 +12,17 @@
     <string name="display_x">X</string>
     <string name="display_save">Save</string>
     <string name="display_add">Add</string>
-    <string name="display_loading">Loading&#8230;</string>
+    <string name="display_loading">Loading…</string>
     <string name="display_setting">Setting</string>
     <string name="display_close">Close</string>
-	<string name="display_content_description">ps</string>
-	<string name="display_previous">Previous</string>
-	<string name="display_next">Next</string>
-	<string name="display_publish">Publish</string>
+    <string name="display_content_description">ps</string>
+    <string name="display_previous">Previous</string>
+    <string name="display_next">Next</string>
+    <string name="display_publish">Publish</string>
     <string name="settings_server">Server</string>
+    <string name="display_no_item">No items</string>
+    <string name="display_error">Error</string>
+    <string name="title_activity_setting">SettingActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

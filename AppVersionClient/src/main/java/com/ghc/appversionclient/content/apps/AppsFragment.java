@@ -14,11 +14,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.Volley;
 import com.ghc.appversionclient.R;
-import com.ghc.appversionclient.common.net.response.AppResponse;
-import com.ghc.appversionclient.common.net.response.RestResponse;
 import com.ghc.appversionclient.common.net.data.AppData;
 import com.ghc.appversionclient.common.net.manager.AppVersionClientManagerFactory;
 import com.ghc.appversionclient.common.net.parser.AppResponseParser;
+import com.ghc.appversionclient.common.net.response.AppResponse;
+import com.ghc.appversionclient.common.net.response.RestResponse;
 import com.ghc.appversionclient.content.IContentDetailView;
 import com.ghc.appversionclient.util.Logger;
 import com.ghc.appversionclient.util.LoginError;
@@ -92,6 +92,7 @@ public class AppsFragment implements IContentDetailView {
 			@Override
 			public void onErrorResponse(VolleyError error) {
 				mLoading.setVisibility(View.INVISIBLE);
+
 				super.onErrorResponse(error);
 			}
 		};
